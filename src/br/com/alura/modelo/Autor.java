@@ -1,0 +1,42 @@
+package br.com.alura.modelo;
+
+import java.time.LocalDate;
+
+import br.com.alura.modelo.Autor;
+
+public class Autor {
+
+	private String nome;
+	private String email;
+	private LocalDate dataCadastro;
+
+	public Autor(String nome, String email) {
+		if (nome.isEmpty()) {
+			throw new IllegalArgumentException("Nome não pode estar vazio");
+		}
+		this.nome = nome;
+
+		if (email.isEmpty()) {
+			throw new IllegalArgumentException("Email não pode estar vazio");
+		}
+		if (!email.matches("^([\\w][\\-]?\\.?)+@(([\\w][\\-]?)+\\.)+([A-Za-z]{2,4})+$")) {
+			throw new IllegalArgumentException("Email inválido");
+		}
+		this.email = email;
+
+		this.dataCadastro = LocalDate.now();
+	}
+
+	@Override
+	public String toString() {
+		return "\nNome: " + this.nome + "\nEmail: " + this.email + "\nData de cadastro: " + this.dataCadastro
+				+ "\n-----------------------------------------------";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Autor outroAutor = (Autor) obj;
+		return this.email.equals(outroAutor.email);
+	}
+
+}
