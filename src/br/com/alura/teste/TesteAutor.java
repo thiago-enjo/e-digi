@@ -11,6 +11,10 @@ public class TesteAutor {
 		BancoAutores.addAutor(new Autor("Jose", "jose.silva@caelum.com.br"));
 		BancoAutores.addAutor(new Autor("Maria", "maria.carmo@gmail.com"));
 //		BancoAutores.addAutor(new Autor("Maria", "maria.carmo@gmail.com"));
+//		BancoAutores.addAutor(new Autor(null, "maria.carmo@gmail.com"));
+//		BancoAutores.addAutor(new Autor("Maria", null));
+//		BancoAutores.addAutor(new Autor("", "maria.carmo@gmail.com"));
+//		BancoAutores.addAutor(new Autor("Maria", ""));
 
 		System.out.println(BancoAutores.getAutores());
 	}

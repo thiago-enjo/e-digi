@@ -1,6 +1,7 @@
 package br.com.alura.modelo;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import br.com.alura.modelo.Autor;
 
@@ -11,16 +12,16 @@ public class Autor {
 	private LocalDate dataCadastro;
 
 	public Autor(String nome, String email) {
-		if (nome.isEmpty()) {
-			throw new IllegalArgumentException("Nome n„o pode estar vazio");
+		if (nome == null || nome.isEmpty()) {
+			throw new IllegalArgumentException("Nome n√£o pode estar vazio");
 		}
 		this.nome = nome;
 
-		if (email.isEmpty()) {
-			throw new IllegalArgumentException("Email n„o pode estar vazio");
+		if (email == null || email.isEmpty()) {
+			throw new IllegalArgumentException("Email n√£o pode estar vazio");
 		}
 		if (!email.matches("^([\\w][\\-]?\\.?)+@(([\\w][\\-]?)+\\.)+([A-Za-z]{2,4})+$")) {
-			throw new IllegalArgumentException("Email inv·lido");
+			throw new IllegalArgumentException("Email inv√°lido");
 		}
 		this.email = email;
 
@@ -31,6 +32,11 @@ public class Autor {
 	public String toString() {
 		return "\nNome: " + this.nome + "\nEmail: " + this.email + "\nData de cadastro: " + this.dataCadastro
 				+ "\n-----------------------------------------------";
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(email);
 	}
 
 	@Override

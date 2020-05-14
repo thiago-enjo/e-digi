@@ -1,20 +1,20 @@
 package br.com.alura.modelo;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BancoAutores {
 
-	private static List<Autor> autores = new ArrayList<>();
+	private static Set<Autor> autores = new HashSet<>();
 
-	public static List<Autor> getAutores() {
-		return Collections.unmodifiableList(autores);
+	public static Set<Autor> getAutores() {
+		return Collections.unmodifiableSet(autores);
 	}
 
 	public static void addAutor(Autor autor) {
 		if (autores.contains(autor)) {
-			throw new RuntimeException("Autor j· cadastrado");
+			throw new RuntimeException("Autor j√° cadastrado");
 		}
 		BancoAutores.autores.add(autor);
 	}
