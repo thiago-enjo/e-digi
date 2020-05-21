@@ -6,16 +6,16 @@ import java.util.Set;
 
 public class BancoAutores {
 
-	private static Set<Autor> autores = new HashSet<>();
+	private Set<Autor> autores = new HashSet<>();
 
-	public static Set<Autor> getAutores() {
+	public Set<Autor> getAutores() {
 		return Collections.unmodifiableSet(autores);
 	}
 
-	public static void addAutor(Autor autor) {
+	public void addAutor(Autor autor) {
 		if (autores.contains(autor)) {
 			throw new RuntimeException("Autor já cadastrado");
 		}
-		BancoAutores.autores.add(autor);
+		autores.add(autor);
 	}
 }

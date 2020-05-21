@@ -1,9 +1,6 @@
 package br.com.alura.modelo;
 
 import java.time.LocalDate;
-import java.util.Objects;
-
-import br.com.alura.modelo.Autor;
 
 public class Autor {
 
@@ -36,7 +33,10 @@ public class Autor {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(email);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		return result;
 	}
 
 	@Override
