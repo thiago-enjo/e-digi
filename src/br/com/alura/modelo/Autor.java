@@ -16,19 +16,22 @@ public class Autor {
 
 		if (email == null || email.isEmpty()) {
 			throw new IllegalArgumentException("Email não pode estar vazio");
-		}
-		if (!email.matches("^([\\w][\\-]?\\.?)+@(([\\w][\\-]?)+\\.)+([A-Za-z]{2,4})+$")) {
+		} else if (!email.matches("^([\\w][\\-]?\\.?)+@(([\\w][\\-]?)+\\.)+([A-Za-z]{2,4})+$")) {
 			throw new IllegalArgumentException("Email inválido");
 		}
 		this.email = email;
 
 		this.dataCadastro = LocalDate.now();
 	}
+	
+	public String getNome() {
+		return nome;
+	}
 
 	@Override
 	public String toString() {
-		return "\nNome: " + this.nome + "\nEmail: " + this.email + "\nData de cadastro: " + this.dataCadastro
-				+ "\n-----------------------------------------------";
+		return "\nNome: " + this.nome + "\nEmail: " + this.email + "\nData de Cadastro: " + this.dataCadastro
+		+ "\n-----------------------------------------------";
 	}
 	
 	@Override
