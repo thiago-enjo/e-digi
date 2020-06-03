@@ -22,20 +22,20 @@ public class Categoria {
 
 	@Override
 	public String toString() {
-		return "\nNome: " + this.getNome();
+		return "\nNome: " + this.nome
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((getNome() == null) ? 0 : getNome().hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		Categoria outraCategoria = (Categoria) obj;
-		return this.getNome().equals(outraCategoria.getNome());
+		return this.nome.equals(outraCategoria.getNome());
 	}
 }
