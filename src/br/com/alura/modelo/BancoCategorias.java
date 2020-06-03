@@ -11,8 +11,8 @@ public class BancoCategorias {
 	public Set<Categoria> getCategorias() {
 		return Collections.unmodifiableSet(categorias);
 	}
-	
-	public void addCategoria(Categoria categoria) {
+
+	public void adiciona(Categoria categoria) {
 		if (categorias.contains(categoria)) {
 			throw new RuntimeException("Categoria já cadastrada");
 		}

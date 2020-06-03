@@ -23,17 +23,16 @@ public class Autor {
 
 		this.dataCadastro = LocalDate.now();
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
 
 	@Override
 	public String toString() {
-		return "\nNome: " + this.nome + "\nEmail: " + this.email + "\nData de Cadastro: " + this.dataCadastro
-		+ "\n-----------------------------------------------";
+		return "\nNome: " + this.nome + "\nEmail: " + this.email + "\n-----------------------------------------------";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -47,5 +46,4 @@ public class Autor {
 		Autor outroAutor = (Autor) obj;
 		return this.email.equals(outroAutor.email);
 	}
-
 }
