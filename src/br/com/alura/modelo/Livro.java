@@ -18,28 +18,53 @@ public class Livro {
 
 	public Livro(String titulo, String resumo, String sumario, int numeroDePaginas, String isbn, Autor autor,
 			Categoria categoria, int edicao, BigDecimal preco) {
+		setTitulo(titulo);
+		setResumo(resumo);
+		setSumario(sumario);
+		setNumeroDePaginas(numeroDePaginas);
+		setIsbn(isbn);
+		setAutor(autor);
+		setCategoria(categoria);
+		setEdicao(edicao);
+		setPreco(preco);
+		this.dataCadastro = LocalDate.now();
+	}
+
+	public String getTitulo() {
+		return this.titulo;
+	}
+
+	private void setTitulo(String titulo) {
 		if (titulo == null || titulo.isEmpty()) {
 			throw new IllegalArgumentException("Título não pode estar vazio");
 		}
 		this.titulo = titulo;
+	}
 
+	private void setResumo(String resumo) {
 		if (resumo == null || resumo.isEmpty()) {
 			throw new IllegalArgumentException("Resumo não pode estar vazio");
 		} else if (resumo.length() > 500) {
 			throw new IllegalArgumentException("Resumo deve ter no máximo 500 caracteres");
 		}
 		this.resumo = resumo;
+	}
 
+	private void setSumario(String sumario) {
 		if (sumario == null || sumario.isEmpty()) {
 			throw new IllegalArgumentException("Sumário não pode estar vazio");
 		}
 		this.sumario = sumario;
+	}
 
+	private void setNumeroDePaginas(int numeroDePaginas) {
 		if (numeroDePaginas < 1) {
 			throw new IllegalArgumentException("Número de páginas deve ser maior que zero");
 		}
 		this.numeroDePaginas = numeroDePaginas;
+	}
 
+	private void setIsbn(String isbn) {
 		if (isbn == null || isbn.isEmpty()) {
 			throw new IllegalArgumentException("ISBN não pode estar vazio");
 		} else if (!isbn.startsWith("978")) {
@@ -48,26 +73,28 @@ public class Livro {
 			throw new IllegalArgumentException("Formato de ISBN inválido(978-xx-xxxxx-xx-x)");
 		}
 		this.isbn = isbn;
+	}
 
+	private void setAutor(Autor autor) {
 		this.autor = autor;
+	}
 
+	private void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
 
+	private void setEdicao(int edicao) {
 		if (edicao < 1) {
 			throw new IllegalArgumentException("Edição do livro inválida");
 		}
 		this.edicao = edicao;
+	}
 
+	private void setPreco(BigDecimal preco) {
 		if (preco.compareTo(BigDecimal.ZERO) < 0) {
 			throw new IllegalArgumentException("Preço inválido");
 		}
 		this.preco = preco;
-
-		this.dataCadastro = LocalDate.now();
-	}
-
-	public String getTitulo() {
-		return this.titulo;
 	}
 
 	@Override

@@ -8,11 +8,7 @@ public class Categoria {
 	private LocalDate dataCadastro;
 
 	public Categoria(String nome) {
-		if (nome == null || nome.isEmpty()) {
-			throw new IllegalArgumentException("Nome não pode estar vazio");
-		}
-		this.nome = nome;
-
+		setNome(nome);
 		this.dataCadastro = LocalDate.now();
 	}
 
@@ -20,9 +16,16 @@ public class Categoria {
 		return nome;
 	}
 
+	private void setNome(String nome) {
+		if (nome == null || nome.isEmpty()) {
+			throw new IllegalArgumentException("Nome não pode estar vazio");
+		}
+		this.nome = nome;
+	}
+
 	@Override
 	public String toString() {
-		return "\nNome: " + this.nome
+		return "\nNome: " + this.nome;
 	}
 
 	@Override
