@@ -12,10 +12,11 @@ public class BancoAutores {
 		return Collections.unmodifiableSet(autores);
 	}
 
-	public void addAutor(Autor autor) {
+	public void adiciona(Autor autor) {
 		if (autores.contains(autor)) {
 			throw new RuntimeException("Autor já cadastrado");
 		}
 		autores.add(autor);
+		System.out.println("Autor " + autor.getNome() + " cadastrado com sucesso!");
 	}
 }
