@@ -15,8 +15,8 @@ public class ItemCarrinho {
 		this.quantidade = quantidade;
 	}
 	
-	public String getTitulo() {
-		return livro.getTitulo();
+	public Livro getLivro() {
+		return livro;
 	}
 	
 	public int getQuantidade() {
@@ -24,11 +24,14 @@ public class ItemCarrinho {
 	}
 	
 	public BigDecimal getSubtotal() {
-		return livro.getPreco().multiply(new BigDecimal(this.getQuantidade()));
+		return getLivro().getPreco().multiply(new BigDecimal(this.getQuantidade()));
 	}
 	
 	@Override
 	public String toString() {
-		return "\nTítulo: " + livro.getTitulo() + "\nPreço: " + livro.getPreco();
+		return "\nTítulo: " + getLivro().getTitulo()
+				+ "\nPreço: " + getLivro().getPreco()
+				+ "\nQtd: " + getQuantidade()
+				+ "\nSubtotal: " + getSubtotal();
 	}
 }

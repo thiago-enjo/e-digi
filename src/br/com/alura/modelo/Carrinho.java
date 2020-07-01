@@ -23,15 +23,9 @@ public class Carrinho {
 	public void checkout() {
 		this.dataVenda = LocalDate.now();
 		System.out.println("\nCompra realizada com sucesso!");
-		for (ItemCarrinho item : itens) {
-			System.out.println("\nTítulo: " + item.getTitulo()
-			+ "\nQtd: " + item.getQuantidade()
-			+ "\nSubtotal: " + item.getSubtotal());
-		}
-//		itens.stream().forEach(item -> System.out.println
-//			("\nTítulo: " + item.getTitulo()
-//			+ "\nQtd: " + item.getQuantidade()
-//			+ "\nSubtotal: " + item.getSubtotal()));
+
+		itens.forEach(System.out::println);
+
 		System.out.println("\nTotal: " + this.getTotal());
 	}
 }

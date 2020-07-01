@@ -89,6 +89,10 @@ public class Livro {
 		}
 		this.edicao = edicao;
 	}
+	
+	public BigDecimal getPreco() {
+		return this.preco;
+	}
 
 	private void setPreco(BigDecimal preco) {
 		if (preco.compareTo(BigDecimal.ZERO) < 0) {
