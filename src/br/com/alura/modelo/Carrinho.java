@@ -24,7 +24,7 @@ public class Carrinho {
 		this.dataVenda = LocalDate.now();
 		System.out.println("\nCompra realizada com sucesso!");
 
-		itens.forEach(System.out::println);
+		itens.forEach(item -> System.out.println(item.getDados()));
 
 		System.out.println("\nTotal: " + this.getTotal());
 	}
