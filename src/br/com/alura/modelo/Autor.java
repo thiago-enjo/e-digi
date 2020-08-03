@@ -24,10 +24,6 @@ public class Autor {
 		}
 		this.nome = nome;
 	}
-	
-	public String getEmail() {
-		return email;
-	}
 
 	private void setEmail(String email) {
 		if (email == null || email.isEmpty()) {
