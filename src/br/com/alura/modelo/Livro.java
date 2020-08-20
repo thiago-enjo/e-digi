@@ -2,22 +2,23 @@ package br.com.alura.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Livro {
 
 	private String titulo;
 	private String resumo;
 	private String sumario;
-	private int numeroDePaginas;
+	private Integer numeroDePaginas;
 	private String isbn;
 	private Autor autor;
 	private Categoria categoria;
-	private int edicao;
+	private Integer edicao;
 	private BigDecimal preco;
 	private LocalDate dataCadastro;
 
-	public Livro(String titulo, String resumo, String sumario, int numeroDePaginas, String isbn, Autor autor,
-			Categoria categoria, int edicao, BigDecimal preco) {
+	public Livro(String titulo, String resumo, String sumario, Integer numeroDePaginas, String isbn, Autor autor,
+			Categoria categoria, Integer edicao, BigDecimal preco) {
 		setTitulo(titulo);
 		setResumo(resumo);
 		setSumario(sumario);
@@ -57,7 +58,7 @@ public class Livro {
 		this.sumario = sumario;
 	}
 
-	private void setNumeroDePaginas(int numeroDePaginas) {
+	private void setNumeroDePaginas(Integer numeroDePaginas) {
 		if (numeroDePaginas < 1) {
 			throw new IllegalArgumentException("Número de páginas deve ser maior que zero");
 		}
@@ -83,13 +84,13 @@ public class Livro {
 		this.categoria = categoria;
 	}
 
-	private void setEdicao(int edicao) {
+	private void setEdicao(Integer edicao) {
 		if (edicao < 1) {
 			throw new IllegalArgumentException("Edição do livro inválida");
 		}
 		this.edicao = edicao;
 	}
-	
+
 	public BigDecimal getPreco() {
 		return this.preco;
 	}
@@ -110,20 +111,8 @@ public class Livro {
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
-		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
-		return result;
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		Livro outroLivro = (Livro) obj;
-		if (this.isbn.equals(outroLivro.isbn) || this.titulo.equals(outroLivro.titulo)) {
-			return true;
-		}
-		return false;
+		return this.isbn.equals(outroLivro.isbn) || this.titulo.equals(outroLivro.titulo);
 	}
 }

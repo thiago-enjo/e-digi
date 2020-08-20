@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class LivroTest {
 
 	@Test
-	public void deveCadastrarLivroComDadosValidos() {
+	public void deveCriarLivroComDadosValidos() {
 
 		assertDoesNotThrow(() -> {
 			new Livro("O Programador Apaixonado", "Suas habilidades são um produto", "Liderar ou sangrar", 287,

@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import br.com.alura.modelo.Autor;
 import br.com.alura.modelo.BancoLivros;
 import br.com.alura.modelo.Carrinho;
+import br.com.alura.modelo.Carrinho.ItemCarrinho;
 import br.com.alura.modelo.Categoria;
-import br.com.alura.modelo.ItemCarrinho;
 import br.com.alura.modelo.Livro;
 
 public class TesteCarrinho {
@@ -26,20 +26,20 @@ public class TesteCarrinho {
 		Livro livro3 = new Livro("A Guerra dos Tronos", "O frio está de volta", "A Fúria dos Reis", 154,
 				"978-85-44102-92-3", new Autor("George R. R. Martin", "george.wont@finishthebook.com"),
 				new Categoria("Business"), 1, new BigDecimal("59.90"));
+		
+		Livro livro4 = new Livro("A G dos Tronos", "O frio está de volta", "A Fúria dos Reis", 154,
+				"978-85-44135-92-3", new Autor("George R. R. Martin", "george.wont@finishthebook.com"),
+				new Categoria("Business"), 1, new BigDecimal("59.90"));
 
 		livros.adiciona(livro1);
 		livros.adiciona(livro2);
 		livros.adiciona(livro3);
 
-		Carrinho carrinho = new Carrinho();
-		
-		ItemCarrinho item1 = new ItemCarrinho(livro1, 1);
-		ItemCarrinho item2 = new ItemCarrinho(livro2, 3);
-		ItemCarrinho item3 = new ItemCarrinho(livro3, 5);
+		Carrinho carrinho = new Carrinho(livros);
 
-		carrinho.adiciona(item1);
-		carrinho.adiciona(item2);
-		carrinho.adiciona(item3);
+		carrinho.adiciona(carrinho.new ItemCarrinho(livro1, 1));
+		carrinho.adiciona(carrinho.new ItemCarrinho(livro2, 3));
+		carrinho.adiciona(carrinho.new ItemCarrinho(livro3, 5));
 		
 		carrinho.checkout();
 	}
