@@ -22,7 +22,7 @@ public class Carrinho {
 
 	public void adiciona(ItemCarrinho item) {
 		this.itens.add(item);
-		this.total = this.total.add(item.livro.getPreco().multiply(BigDecimal.valueOf(item.quantidade)));
+		this.total = this.total.add(item.getSubtotal());
 		System.out.println(
 				item.quantidade + " unidade(s) de \"" + item.livro.getTitulo() + "\" adicionado(s) ao carrinho!");
 	}
@@ -48,6 +48,10 @@ public class Carrinho {
 			}
 			this.livro = livro;
 			this.quantidade = quantidade;
+		}
+		
+		public BigDecimal getSubtotal() {
+			return livro.getPreco().multiply(BigDecimal.valueOf(quantidade));
 		}
 
 		public String getDados() {
