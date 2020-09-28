@@ -39,6 +39,6 @@ public class Categoria {
 	@Override
 	public boolean equals(Object obj) {
 		Categoria outraCategoria = (Categoria) obj;
-		return this.nome.equals(outraCategoria.getNome());
+		return this.nome.equals(outraCategoria.nome);
 	}
 }

@@ -14,6 +14,12 @@ class CategoriaTest {
 	}
 
 	@Test
+	public void deveCriarCategoriaComNome() {
+
+		assertEquals("Programação", new Categoria("Programação").getNome());
+	}
+
+	@Test
 	public void lancaExcecaoCasoNomeDaCategoriaEstejaVazio() {
 
 		assertThrows(IllegalArgumentException.class, () -> new Categoria(""));
