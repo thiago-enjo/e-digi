@@ -61,10 +61,10 @@ public class Autor {
 	}
 
 	private void setBiografia(String biografia) {
-		if (nome == null || nome.isEmpty()) {
+		if (biografia == null || biografia.isBlank()) {
 			throw new IllegalArgumentException("Biografia não pode estar vazia");
 		}
-		this.biografia = biografia;
+		this.biografia = biografia.trim();
 	}
 
 	public void setDataCadastro(LocalDateTime dataCadastro) {

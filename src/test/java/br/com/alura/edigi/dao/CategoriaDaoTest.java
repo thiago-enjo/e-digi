@@ -1,4 +1,4 @@
-package br.com.alura.edigi.dao.impl;
+package br.com.alura.edigi.dao;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,16 +14,16 @@ import org.junit.jupiter.api.Test;
 import br.com.alura.edigi.factory.ConnectionFactory;
 import br.com.alura.edigi.modelo.Categoria;
 
-class CategoriaDaoImplTest {
+class CategoriaDaoTest {
 
 	private static Categoria categoria;
 	private static Connection conexao;
-	private CategoriaDaoImpl categoriaDao;
+	private CategoriaDao categoriaDao;
 
-	public CategoriaDaoImplTest() throws SQLException {
+	public CategoriaDaoTest() throws SQLException {
 		conexao = ConnectionFactory.getConexao();
 		conexao.setAutoCommit(false);
-		categoriaDao = new CategoriaDaoImpl(conexao);
+		categoriaDao = new CategoriaDao(conexao);
 	}
 
 	@BeforeAll

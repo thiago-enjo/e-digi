@@ -5,44 +5,44 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.alura.edigi.repositorio.BancoLivros;
+import br.com.alura.edigi.dao.LivroDao;
 
 public class Carrinho {
 
 	private List<ItemCarrinho> itens = new ArrayList<>();
+	private LivroDao livroDao;
 	private BigDecimal total = new BigDecimal(0);
 	private LocalDateTime dataVenda;
-	private BancoLivros livros;
-
-	public Carrinho(BancoLivros livros) {
-		this.livros = livros;
-	}
-
-	public BigDecimal getTotal() {
-		return this.total;
+	
+	public Carrinho(LivroDao livroDao) {
+		this.livroDao = livroDao;
 	}
 
 	public void adiciona(ItemCarrinho item) {
-		this.itens.add(item);
-		this.total = this.total.add(item.getSubtotal());
+		itens.add(item);
+		total = total.add(item.getSubtotal());
 		System.out.println(
 				item.quantidade + " unidade(s) de \"" + item.livro.getTitulo() + "\" adicionado(s) ao carrinho!");
 	}
 
 	public void checkout() {
-		this.dataVenda = LocalDateTime.now();
+		dataVenda = LocalDateTime.now();
 
 		System.out.println("\nCompra realizada com sucesso!");
-		this.itens.forEach(item -> System.out.println(item.getDados()));
-		System.out.printf("Total: %.2f", this.total);
+		itens.forEach(item -> System.out.println(item.getDados()));
+		System.out.printf("Total: %.2f", total);
+	}
+	
+	public BigDecimal getTotal() {
+		return total;
 	}
 
 	public class ItemCarrinho {
 		private Livro livro;
-		private int quantidade;
+		private Integer quantidade;
 
 		public ItemCarrinho(Livro livro, Integer quantidade) {
-			if (livros.buscaPorTitulo(livro.getTitulo()).isEmpty()) {
+			if (livroDao.buscaPorTitulo(livro.getTitulo()).isEmpty()) {
 				throw new RuntimeException("Livro inexistente no catálogo");
 			}
 			if (quantidade < 1) {
@@ -59,6 +59,10 @@ public class Carrinho {
 		public String getDados() {
 			return String.format("%nTítulo: %s%n Preço: %.2f%n Qtd: %d%n Subtotal: %.2f%n", livro.getTitulo(),
 					livro.getPreco(), quantidade, livro.getPreco().multiply(new BigDecimal(this.quantidade)));
+		}
+		
+		public Livro getLivro() {
+			return livro;
 		}
 	}
 }

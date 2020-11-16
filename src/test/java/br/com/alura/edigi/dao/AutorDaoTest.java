@@ -1,4 +1,4 @@
-package br.com.alura.edigi.dao.impl;
+package br.com.alura.edigi.dao;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,16 +14,16 @@ import org.junit.jupiter.api.Test;
 import br.com.alura.edigi.factory.ConnectionFactory;
 import br.com.alura.edigi.modelo.Autor;
 
-class AutorDaoImplTest {
+class AutorDaoTest {
 
 	private static Autor autor;
 	private static Connection conexao;
-	private AutorDaoImpl autorDao;
+	private AutorDao autorDao;
 
-	public AutorDaoImplTest() throws SQLException {
+	public AutorDaoTest() throws SQLException {
 		conexao = ConnectionFactory.getConexao();
 		conexao.setAutoCommit(false);
-		autorDao = new AutorDaoImpl(conexao);
+		autorDao = new AutorDao(conexao);
 	}
 
 	@BeforeAll

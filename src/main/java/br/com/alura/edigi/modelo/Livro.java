@@ -50,9 +50,8 @@ public class Livro {
 	private void setIsbn(String isbn) {
 		if (isbn == null || isbn.trim().isEmpty()) {
 			throw new IllegalArgumentException("ISBN não pode estar vazio");
-		} else if (!isbn.startsWith("978")) {
-			throw new IllegalArgumentException("Formato de ISBN inválido(978-xx-xxxxx-xx-x)");
-		} else if (!isbn.matches("\\d{3}-\\d{2}-\\d{5}-\\d{2}-\\d{1}")) {
+		}
+		if (!isbn.matches("^978-\\d{2}-\\d{5}-\\d{2}-\\d{1}$")) {
 			throw new IllegalArgumentException("Formato de ISBN inválido(978-xx-xxxxx-xx-x)");
 		}
 		this.isbn = isbn.trim();
@@ -133,8 +132,8 @@ public class Livro {
 
 	@Override
 	public String toString() {
-		return "\nTítulo: " + this.titulo + "\nResumo: " + this.resumo + "\nSumário: " + this.sumario
-				+ "\nNúmero de páginas: " + this.numeroDePaginas + "\nISBN: " + this.isbn + "\nAutor: "
+		return "\nId: " + this.id + "\nTítulo: " + this.titulo + "\nResumo: " + this.resumo + "\nSumário: "
+				+ this.sumario + "\nNúmero de páginas: " + this.numeroDePaginas + "\nISBN: " + this.isbn + "\nAutor: "
 				+ this.autor.getNome() + "\nCategoria: " + this.categoria.getNome() + "\nEdição: " + this.edicao
 				+ "\nPreço: " + this.preco + "\n-----------------------------------------------";
 	}
